@@ -87,16 +87,12 @@ class UpdateController extends Controller
                 return [
                     'id' => $data->id,
                     'Nama Pelapor' => $extractedData['namaPelapor'],
-                    'Nama Petugas' => $this->normalizePetugasNames($data->petugas),
-                    'created_at' => $this->formatDateTime($data->created_at),
                     'datetime_masuk' => $this->formatDateTime($data->datetime_masuk),
                     'datetime_pengerjaan' => $this->formatDateTime($data->datetime_pengerjaan),
                     'datetime_selesai' => $this->formatDateTime($data->datetime_selesai),
+                    'Nama Petugas' => $this->normalizePetugasNames($data->petugas),
                     'status' => $extractedData['status'] ?? $data->status ?? '',
-                    'is_pending' => $data->is_pending,
-                    'Nama Unit/Poli' => $this->normalizeUnitNames($extractedData['namaUnit']),
-                    'respon_time' => $responTime['formatted'],
-                    'respon_time_minutes' => $responTime['minutes'],
+                    'is_pending' => $data->is_pending,                    
                 ];
             })->toArray();
     }
