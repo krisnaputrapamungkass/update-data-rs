@@ -76,7 +76,7 @@ class UpdateController extends Controller
         $startDate = Carbon::createFromFormat('Y-m', $selectedMonth)->startOfMonth();
         $endDate = Carbon::createFromFormat('Y-m', $selectedMonth)->endOfMonth();
 
-        return Data::where('form_id', 3)
+        return Data::where('form_id', 4)
             ->whereBetween('created_at', [$startDate, $endDate])
             ->get()
             ->map(function ($data) {
@@ -274,7 +274,7 @@ class UpdateController extends Controller
 
     private function getAvailableMonths()
     {
-        $months = Data::where('form_id', 3)
+        $months = Data::where('form_id', 4)
             ->selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month')
             ->groupBy('month')
             ->orderBy('month', 'desc')
